@@ -1,0 +1,91 @@
+**************************************************************************************
+* Compiling SBS2 using Qt 5.3.1
+**************************************************************************************
+
+
+
+1) Compiling the sbs2-emotiv-decryptor-source
+
+1.1) Add this line to the sbs2emotivdecryptor.pro file
+QMAKE_CXXFLAGS += -std=c++11
+This enables the compilation using C++11 (when compiling using C++11, Qt5 brings
+new features, such as lambda function syntax in the QObject::connect, type inference, 
+range-based for loop, initializer Lists, static_assert, override and final, etc).
+
+--- Compiling errors ---
+
+Error 1: 
+sbs2emotivdecryptor.cpp:29: error: 'const class QChar' has no member named 'toAscii'
+
+Solution: 
+
+Replace the line: 
+serialNumber[i] = serialNumber_.at(i).toAscii();
+
+by this one:
+serialNumber[i] = serialNumber_.at(i).toLatin1();
+
+Note:
+This is the only change required to compile the sbs2emotivdecryptor using Qt5.
+
+
+***************************************************************************************
+
+2) Compiling the smartphonebrainscanner2
+
+1.1) At theses lines to the .pro file:
+QT += widgets concurrent
+QMAKE_CXXFLAGS += -std=c++11
+
+- In Qt5, the QtGui module was splitted in two modules:
+
+QtGui: provides classes for windowing system integration, event handling, OpenGL and OpenGL ES integration, 2D graphics, basic imaging, fonts and text. 
+
+QtWidgets: provides a set of UI elements to create classic desktop-style user interfaces. 
+
+- The widgets module needs to be included using QT += widgets (in the project file). This module also contains the useful classes QApplication and QGuiApplication.
+
+- In Qt4, QtConcurrent was part of QtCore, so there was no need to include specific headers. This is no longer the case with Qt 5. In order to include QtConcurrent in
+your project, you need to add QT += concurrent in your project file, as well as
+the corresponding header #include <QtConcurrent/QtConcurrent> in the cpp files
+that use QtConcurrent.
+
+- Qt OpenGL: Apart from the QGLWidget class, this module should not be used anymore for new code. Please use the corresponding OpenGL classes in Qt Gui. So, do not 
+include QT += opengl in your project file, and stop using #include <QtOpenGL>, use
+instead #include<QtGui>.
+
+- During the design of Qt 5, the QGL* classes were marked as “Done” and new QOpenGL* replacements were introduced and placed directly into the QtGui library. The reason for these changes is that the new Qt Quick 2 renderer is based upon OpenGL and so is now a core part of Qt’s graphical offerings. Also, the new QOpenGL* classes can be used as direct replacements for the older QGL* classes. For new code, the QOpenGL* classes from QtGui are recommended. 
+
+- Take into account the previous comments related with OpenGL, I have programmed a new example called ExampleBrain, which is basically a new version of the sbs2brain3d.
+This new example was implemented using the new OpenGL classes.
+
+
+1.2) Include the sbs2emotivdecryptor library compiled in the previous step.
+
+1.3) Compile 
+
+Compilation errors:
+
+Error 1: 
+sbs2datahandler.cpp:156: error: 'QtConcurrent' has not been declared
+Solution:
+Include the header #include <QtConcurrent/QtConcurrent> in this file (sbs2datahandler.cpp)
+
+Error 2:
+sbs2sourcereconstruction.cpp:297: error: 'QtConcurrent' has not been declared
+Solution:
+Include the header #include <QtConcurrent/QtConcurrent> in this file (sbs2sourcereconstruction.cpp)
+
+Error 3:
+sbs2emocapdatareader.cpp:110: error: 'QtConcurrent' has not been declared
+Solution:
+Include the header #include <QtConcurrent/QtConcurrent> in this file (sbs2emocapdatareader.cpp)
+
+Error 4:
+sbs2emotivdatareader.cpp:108: error: 'QtConcurrent' has not been declared
+Solution:
+Include the header #include <QtConcurrent/QtConcurrent> in this file (sbs2emotivdatareader.cpp)
+
+Error 5:
+sbs2emocap28datareader.cpp:524: error: 'QtConcurrent' has not been declared
+Include the header #include <QtConcurrent/QtConcurrent> in this file (sbs2emocap28datareader.cpp)

@@ -1,0 +1,32 @@
+digraph G
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Sbs2Callback",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" thisPacket" ,fontname="Helvetica"];
+  Node2 [label="Sbs2Packet",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sbs2_packet.html"];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sbs2Region" ,fontname="Helvetica"];
+  Node3 [label="Sbs2Region",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sbs2_region.html"];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sbs2DataHandler" ,fontname="Helvetica"];
+  Node4 [label="Sbs2DataHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sbs2_data_handler.html"];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sbs2Spectrogram" ,fontname="Helvetica"];
+  Node5 [label="Sbs2Spectrogram",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sbs2_spectrogram.html"];
+  Node6 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" powerValues\ntoSpectrogramValues\nsourceReconstructionPower\lValues\ntoSourceReconstructionValues\nsourceReconstructionValues\nspectrogramValues\ntoFilterValues\nfilterResultValues" ,fontname="Helvetica"];
+  Node6 [label="DTU::DtuArray2D\< double \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_d_t_u_1_1_dtu_array2_d.html"];
+  Node7 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="TNT::Array2D\< double \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_t_n_t_1_1_array2_d.html"];
+  Node8 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" v_" ,fontname="Helvetica"];
+  Node8 [label="TNT::Array1D\< double * \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_t_n_t_1_1_array1_d.html"];
+  Node9 -> Node7 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" data_" ,fontname="Helvetica"];
+  Node9 [label="TNT::Array1D\< double \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_t_n_t_1_1_array1_d.html"];
+  Node10 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sbs2SourceReconstruction" ,fontname="Helvetica"];
+  Node10 [label="Sbs2SourceReconstrucion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sbs2_source_reconstrucion.html"];
+  Node2 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" thisPacket" ,fontname="Helvetica"];
+  Node11 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sbs2Filter" ,fontname="Helvetica"];
+  Node11 [label="Sbs2Filter",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sbs2_filter.html"];
+  Node12 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sbs2FileHandler" ,fontname="Helvetica"];
+  Node12 [label="Sbs2FileHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sbs2_file_handler.html"];
+  Node13 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" sbs2NetworkHandler" ,fontname="Helvetica"];
+  Node13 [label="Sbs2NetworkHandler",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_sbs2_network_handler.html"];
+}
