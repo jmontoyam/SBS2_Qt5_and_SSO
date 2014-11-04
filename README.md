@@ -13,3 +13,5 @@ Group Lasso regularizers, as well as the matrix factorization approach described
 paper "A regularized matrix factorization approach to induce structured sparse-low-rank solutions in the EEG inverse problem" 
 (http://asp.eurasipjournals.com/content/2014/1/97). Finally, this updated version of the SBS2 project contains 
 a new 3D brain visualization class, which is based on the new QWindow and QOpenGL* classes.
+To see some pictures of an EEG inverse solver in action (developed using the SBS2 project (the Qt5 version contained in this repository) and the SSO library), running on mobile devices, please take a look at the README.md file of the  
+SSO library (https://github.com/jmontoyam/SSO/blob/master/README.md).
