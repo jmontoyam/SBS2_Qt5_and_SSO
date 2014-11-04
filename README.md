@@ -6,7 +6,7 @@ This repository is an update of the smartphonebrainscanner2 (SBS2) project
 to Qt5. In this repository you can find a file called "Steps_to_Migrate_SBS2_to_Qt5.txt",
 which describes all the steps involved in updating SBS2 from Qt4 to Qt5.
 Additionally, in the app folder, you can find an application that uses the SSO library
-(https://github.com/jmontoyam/SSO) to solve the EEG inverse using structured sparsity
+(https://github.com/jmontoyam/SSO) to solve the EEG inverse problem using structured sparsity
 optimization methods. Using SBS2 in combination with the SSO library, you can develop
 an EEG inverse solver based on standard regularizers, such as Lasso and 
 Group Lasso regularizers, as well as the matrix factorization approach described in the 
